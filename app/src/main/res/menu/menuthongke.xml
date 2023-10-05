@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/thonkethu"
+        android:title="Thống Kê Thu"
+        android:icon="@drawable/iconthongke"/>
+    <item android:id="@+id/thonkechi"
+        android:title="Thống Kê Chi"
+        android:icon="@drawable/iconthongke"/>
+</menu>

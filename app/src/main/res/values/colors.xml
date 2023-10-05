@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="Xam">#FFB90F</color>
+    <color name="tab_indicator_gray">#c0c0c0</color>
+    <color name="purple_500">#459170</color>
+    <color name="purple_700">#274C3C</color>
+    <color name="purple_900">#102019</color>
+    <color name="purple_200">#74E4B4</color>
+    <color name="colorPrimary">#024265</color>
+    <color name="colorPrimaryDark">#024265</color>
+    <color name="colorAccent">#05af9b</color>
+    <color name="ret">#FF1100</color>
+
+    <color name="color_one">#fb7268</color>
+    <color name="color_white">#ededf2</color>
+    <color name="color_two">#E3E0E0</color>
+    <color name="R">#FFA726</color>
+    <color name="Python">#66BB6A</color>
+    <color name="CPP">#EF5350</color>
+    <color name="Java">#29B6F6</color>
+    <color name="yellow">#FFEB3B</color>
+    <color name="black2">#504D4D</color>
+</resources>

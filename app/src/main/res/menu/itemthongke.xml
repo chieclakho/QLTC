@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/thonkethu"
+        android:icon="@drawable/iconthongke"
+        android:title="@string/txt_thong_ke_thu" />
+    <item
+        android:id="@+id/thonkechi"
+        android:icon="@drawable/iconthongke"
+        android:title="@string/txt_thong_ke_chi" />
+</menu>

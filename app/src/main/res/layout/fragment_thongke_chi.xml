@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="8dp"
+        android:orientation="vertical">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="2dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_start"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_weight="1"
+                android:background="@color/purple_200"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/txt_start"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                tools:ignore="Autofill,LabelFor" />
+
+            <ImageView
+                android:id="@+id/date_pick_start"
+                android:layout_width="50dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="20dp"
+                android:padding="10dp"
+                android:src="@drawable/img"
+                tools:ignore="ContentDescription" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="50dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tv_end"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_weight="1"
+                android:background="@color/purple_200"
+                android:gravity="center"
+                android:padding="10dp"
+                android:text="@string/txt_end"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                tools:ignore="Autofill,LabelFor" />
+
+            <ImageView
+                android:id="@+id/date_pick_end"
+                android:layout_width="50dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="20dp"
+                android:padding="10dp"
+                android:src="@drawable/img"
+                tools:ignore="ContentDescription" />
+        </TableRow>
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@color/purple_500"
+            android:paddingHorizontal="40dp"
+            android:text="@string/txt_tim_kiem"
+            android:textColor="@color/white"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/tv_sum_money"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:text="@string/txt_number"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rcv_khoan_chi"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_khoan_chi" />
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btn_add_khoan_chi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="16dp"
+        android:background="@color/white"
+        android:src="@android:drawable/ic_input_add"
+        tools:ignore="ContentDescription" />
+</FrameLayout>

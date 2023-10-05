@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "128399019173",
+    "project_id": "qltc-java",
+    "storage_bucket": "qltc-java.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:128399019173:android:dc1cc768d7e753927cd14c",
+        "android_client_info": {
+          "package_name": "com.clk.quanlichitieu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "128399019173-2i1m5l0i9h56d9988ca8bqqu3acu4oac.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.clk.quanlichitieu",
+            "certificate_hash": "216f030d8daaa54fa3beeae4b8e4c96a539dc387"
+          }
+        },
+        {
+          "client_id": "128399019173-fqkftbdd67oo6r4cho39aas2a0ga8qkq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBZe6LXgO_NNOqOiwJH5g8iG0nVskeIRHU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "128399019173-fqkftbdd67oo6r4cho39aas2a0ga8qkq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
