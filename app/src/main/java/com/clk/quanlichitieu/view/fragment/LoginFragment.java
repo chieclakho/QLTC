@@ -11,8 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -66,12 +68,9 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, CommonVM> 
     @Override
     protected void initViews() {
         currentregistrationtoken();
-
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
-        if (user != null) {
-            binding.edtEmail.setText(user.getEmail());
-        }
+        if (user != null) binding.edtEmail.setText(user.getEmail());
         binding.btnLogin.setOnClickListener(this);
         binding.btnLoginGoogle.setOnClickListener(this);
         binding.tvSignUp.setOnClickListener(this);
@@ -84,18 +83,20 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, CommonVM> 
         builder.setView(R.layout.progressbar);
         dialog = builder.create();
         CommonUtils.getInstance().savePref("ABOUT", TAG);
-        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), result -> {
-            if (result.getResultCode() == Activity.RESULT_OK) {
-                Intent data = result.getData();
-                Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
-                try {
-                    GoogleSignInAccount account = task.getResult(ApiException.class);
-                    firebaseAuthWithGoogle(account);
-                } catch (ApiException e) {
-                    Toast.makeText(context, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
-                }
+        launcher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), this::checkResult);
+    }
+
+    private void checkResult(ActivityResult result) {
+        if (result.getResultCode() == Activity.RESULT_OK) {
+            Intent data = result.getData();
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                firebaseAuthWithGoogle(account);
+            } catch (ApiException e) {
+                Toast.makeText(context, "Đăng nhập thất bại", Toast.LENGTH_SHORT).show();
             }
-        });
+        }
     }
 
     private void setDialog(boolean show) {
@@ -105,10 +106,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, CommonVM> 
 
     private void currentregistrationtoken() {
         FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
-            if (!task.isSuccessful()) {
-                Log.i(TAG, "Fetching fail", task.getException());
-                return;
-            }
+            if (!task.isSuccessful()) return;
             String token = task.getResult();
             FacebookSdk.setClientToken(token);
             FacebookSdk.sdkInitialize(App.getInstance());
@@ -160,7 +158,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, CommonVM> 
                 Log.d(TAG, "facebook:onCancel");
             }
             @Override
-            public void onError(FacebookException error) {Log.d(TAG, "facebook:onError", error);}
+            public void onError(@NonNull FacebookException error) {Log.d(TAG, "facebook:onError", error);}
         };
     }
 
@@ -188,8 +186,7 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, CommonVM> 
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
-        mAuth.signInWithCredential(credential)
-                .addOnCompleteListener((Activity) context, task -> {
+        mAuth.signInWithCredential(credential).addOnCompleteListener((Activity) context, task -> {
                     setDialog(false);
                     if (task.isSuccessful()) {
                         Toast.makeText(context, "Đăng nhập thành công", Toast.LENGTH_SHORT).show();
