@@ -65,8 +65,8 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, CommonVM> 
 
     @Override
     protected void initViews() {
-        FacebookSdk.sdkInitialize(App.getInstance());
-        FacebookSdk.setApplicationId("1479821226167301");
+        currentregistrationtoken();
+
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser user = mAuth.getCurrentUser();
         if (user != null) {
@@ -78,7 +78,6 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, CommonVM> 
         binding.tvForGotPassWord.setOnClickListener(this);
         binding.btnLoginFb.setOnClickListener(this);
         checkPermissionAPI();
-        currentregistrationtoken();
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN).requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build();
         mGoogleSignInClient = GoogleSignIn.getClient(context, gso);
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -107,11 +106,14 @@ public class LoginFragment extends BaseFragment<FragmentLoginBinding, CommonVM> 
     private void currentregistrationtoken() {
         FirebaseMessaging.getInstance().getToken().addOnCompleteListener(task -> {
             if (!task.isSuccessful()) {
-                Log.i(TAG, "Fetching", task.getException());
+                Log.i(TAG, "Fetching fail", task.getException());
                 return;
             }
             String token = task.getResult();
-            Log.i(TAG, "Fetching" + token);
+            FacebookSdk.setClientToken(token);
+            FacebookSdk.sdkInitialize(App.getInstance());
+            FacebookSdk.setApplicationId("1479821226167301");
+            Log.i(TAG, "Fetching succsess" + token);
         });
     }
 

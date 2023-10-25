@@ -8,6 +8,7 @@ import com.clk.quanlichitieu.view.fragment.AboutFragment;
 import com.clk.quanlichitieu.view.fragment.LoginFragment;
 import com.clk.quanlichitieu.view.fragment.MenuFragment;
 import com.clk.quanlichitieu.viewmodel.CommonVM;
+import com.facebook.FacebookSdk;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 

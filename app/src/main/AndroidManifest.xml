@@ -25,10 +25,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <meta-data android:name="com.facebook.sdk.AutoInitEnabled"
-            android:value="false"/>
         <meta-data android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id"/>
+        <meta-data android:name="com.facebook.sdk.AutoInitEnabled"
+            android:value="false"/>
         <service
             android:name="com.clk.quanlichitieu.fcm.MyFirebaseMessagingService"
             android:enabled="true"
